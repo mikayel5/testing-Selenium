@@ -10,22 +10,28 @@ var driver = new webdriver.Builder().forBrowser('chrome')
 
 
 
-driver.get('https://frontdev.caiman.am');
-//driver.findElement(By.className("services"))
+driver.get('https://frontdev.caiman.am/library/closure');
+// driver.then(function () {
+//     driver.findElement(By.xpath("//*[@class='services']/span[2]")).click();
+//     console.log("barev-1")
+// });
+
+// driver.sleep(5000).then(function () {
+//     driver.findElement(By.xpath("//*[@class='tabs-nav-list']/div[0]")).click();
+//     console.log("barev-2")
+// });
+
 
 
 // driver.sleep(5000).then(function () {
-//     driver.findElement(By.xpath("//*[@class='services']/span[1]")).click();
-//     console.log("barev-1")
-// });
-driver.sleep(5000).then(function () {
-    driver.findElement(By.xpath("//*[@class='services']/span[2]")).click();
-    console.log("barev-2")
+//     driver.findElement(By.xpath("//*[@class='services']/span[2]")).click();
+//     console.log("barev-2")
 
-})
-driver.sleep(10000).then(function () {
-    driver.findElement(By.className("ant-btn ant-btn-primary sc-bdfBwQ imaoqE caiman-btn caiman-btn-primary")).click();
-    console.log("barev-3")
+// })
+// driver.sleep(10000).then(function () {
+//     driver.findElement(By.className("ant-btn ant-btn-primary sc-bdfBwQ imaoqE caiman-btn caiman-btn-primary")).click();
+//     console.log("barev-3")
 
-})
+// })
 
+driver.findElement(By.className("ant-btn ant-btn-primary sc-bdfBwQ imaoqE caiman-btn caiman-btn-primary"))
