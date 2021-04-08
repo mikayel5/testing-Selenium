@@ -28,7 +28,7 @@ driver.sleep(20000).then(function () {
     // });
     driver.findElements(By.xpath('/html/body/div/main/div/div/div[3]/form/table/tbody/tr/td[5]')).then(function (txt) {
         const countries = txt.map(el => el.getText().then(function (ttext) { return (ttext) }))
-        Promise.all(countries).then(values => {
+        let isCompare = Promise.all(countries).then(values => {
             const countriesName = values;
             const countriesNameSort = values.sort();
             function array_compare(countriesName, countriesNameSort) {
@@ -38,6 +38,7 @@ driver.sleep(20000).then(function () {
                 return true;
             }
             console.log(array_compare(countriesName, countriesNameSort))
+
         });
     })
 })
