@@ -1,7 +1,7 @@
-require('chromedriver');
+require('geckodriver');
 const { Builder, By, Key, until } = require('selenium-webdriver');
 var webdriver = require('selenium-webdriver');
-var driver = new webdriver.Builder().forBrowser('chrome')
+var driver = new webdriver.Builder().forBrowser('firefox')
     .build();
 //driver.get('https://frontdev.caiman.am');
 // driver.findElement(By.xpath("//*[@class='services']/span[1]")).click();

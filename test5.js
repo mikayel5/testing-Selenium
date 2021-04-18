@@ -1,0 +1,76 @@
+//require('chromedriver');
+require('geckodriver');
+const { Builder, By, Key, until, WebDriver, WebElement, Actions } = require('selenium-webdriver');
+(async function example() {
+    let driver = await new Builder().forBrowser('firefox').build();
+    try {
+        // Navigate to Url
+        await driver.get('https://essentialsln.com/');
+
+        await driver.findElement(By.xpath('/html/body/div[1]/div[2]/div/div/div/main/article/div/div[1]/div/div/div/div/div/div[2]/div/div/div/div/div/div/div/a')).click();
+        await driver.findElement(By.xpath('//html/body/div[1]/div[2]/div/div/div/main/article/div/div[13]/div/div/div/div/div/div/div[2]/div/div/div/div/div/form/div[2]/p/input')).click();
+        let result = await driver.wait(until.elementLocated(By.xpath('/html/body/div[1]/div[2]/div/div/div/main/article/div/div[13]/div/div/div/div/div/div/div[2]/div/div/div/div/div/form/div[2]/div[1]/label/span/span')), 10000)
+        await driver.sleep(5000);
+
+        if (result) {
+            await driver.findElement(By.name('First')).sendKeys('Mikayel');
+            await driver.findElement(By.name('text-576')).sendKeys('Nahapetyan');
+            await driver.findElement(By.name('your-email')).sendKeys('mikayel@gmail.com');
+            await driver.findElement(By.name('your-message')).sendKeys('Hello my frineds');
+            await driver.findElement(By.xpath('//html/body/div[1]/div[2]/div/div/div/main/article/div/div[13]/div/div/div/div/div/div/div[2]/div/div/div/div/div/form/div[2]/p/input')).click();
+            /*
+            **
+            */
+
+            await (await driver.findElement(By.xpath('/html/body/div[1]/header/div[1]/div/div/div[1]/div[2]/div'))).click();
+            //await driver.sleep(5000);
+            const menuTexts1 = await driver.findElements(
+                By.xpath('/html/body/div[1]/header/div[1]/div/div/div[1]/div[2]/div/div/ul/li/a'),
+            );
+            const menu1 = [];
+            for await (const el of menuTexts1) {
+                const text = await el.getText();
+                menu1.push(text);
+            }
+            console.log("names-1", menu1)
+            /**
+             *
+             */
+
+            await driver.manage().window().setRect({ width: 768, height: 500 });
+
+            /**
+             * 
+             */
+            await driver.sleep(5000);
+            await (await driver.findElement(By.xpath('/html/body/div[1]/header/div[3]/div/div/a/i'))).click();
+
+            const menuTexts2 = await driver.findElements(
+                By.xpath('/html/body/div[7]/div/ul/li/a'),
+            );
+            const menu2 = [];
+            for await (const el of menuTexts2) {
+                const text = await el.getText();
+                menu2.push(text);
+            }
+            console.log("names-2-", menu2)
+
+            function array_compare(menuTexts1, menuTexts2) {
+                for (i = 0; i < menuTexts1.length; i++)
+                    if (menuTexts1[i] != menuTexts2[i])
+                        return false;
+                return true;
+            }
+            console.log(array_compare(menuTexts1, menuTexts2))
+
+        } else {
+            console.log("We have error")
+        }
+
+    }
+    finally {
+        console.log("hell")
+        //driver.quit();
+    }
+
+})();

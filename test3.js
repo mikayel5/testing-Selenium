@@ -89,6 +89,7 @@ driver.sleep(10000).then(() => {
     /**
      *
      */
+    console.log("names-", countries)
     const countriesValues = await Promise.all(countries).then(values => values);
     /**
      * [[zone, index], [zone1, index1], [zone2, index2] ...]
@@ -105,26 +106,8 @@ driver.sleep(10000).then(() => {
     });
     async function State(nameCountry) {
         for (i = 0; i < nameCountry.length; i++) {
-
+            console.log("name-", nameCountry[i])
             await driver.findElement(By.linkText(nameCountry[i])).click()
-                .then(() => {
-                    console.log("name-", nameCountry[i])
-                    driver.findElements(By.xpath('//*[@id="content"]/div[2]/div[2]/form/table/tbody/tr/td[3]/input')).then(function (txt) {
-                        const countries = txt.map(el => el.getText().then(function (ttext) { return (ttext) }))
-                        let isCompare = Promise.all(countries).then(values => {
-                            const countriesName = values;
-                            const countriesNameSort = values.sort();
-                            function array_compare(countriesName, countriesNameSort) {
-                                for (i = 0; i < countriesName.length; i++)
-                                    if (countriesName[i] != countriesNameSort[i])
-                                        return false;
-                                return true;
-                            }
-                            console.log(array_compare(countriesName, countriesNameSort))
-
-                        });
-                    })
-                })
                 .then(() => {
                     driver.navigate().back()
                 })

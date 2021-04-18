@@ -9,7 +9,7 @@ driver.findElement(By.className('btn btn-default')).click();
 driver.sleep(10000).then(function () {
     var countreis = driver.findElement(By.css('[title=Countries]'))
     countreis.click()
-    console.log("barev-4")
+    console.log("clicked-1")
     // console.log(teest.getAttribute("textContent"))
 })
 // driver.sleep(10000).then(function () {
